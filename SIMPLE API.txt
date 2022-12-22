@@ -1,0 +1,100 @@
+Working with Simple APIs Part 1 
+
+
+
+API stands for Application Programming Interface and is a software intermediary that allows two applications to talk to each other.
+
+
+
+One of the applications I used in this notebook is Random User Generator. 
+
+
+
+RandomUser is an open-source, free API providing developers with randomly generated users to be used as placeholders for testing purposes. This makes the tool similar to Lorem Ipsum, but is a placeholder for people instead of text. The API can return multiple results, as well as specify generated user details such as gender, email, image, username, address, title, first and last name, and more. More information on RandomUser can be found here.
+
+
+
+Another example of a simple API we used in this notebook is Fruitvice application. The Fruitvice API web service which provides data for all kinds of fruit! You can use Fruityvice to find out interesting information about fruit and educate yourself. The web service is completely free to use and contribute to.
+
+
+
+My first attempt at using python to create a simple API. I used the RandomUser and requests libraries to access and retrieve data from the RandomUser and Fruitvice APIs.
+
+
+
+First, let's start by installing the necessary libraries. We can use pip to install RandomUser and requests.
+
+
+
+Now that we have the libraries installed, let's start by using the RandomUser library to access the RandomUser API.
+
+
+
+The "Get Methods" functions mentioned at the beginning of this notebook, can generate the required parameters to construct a dataset. For example, to get full name, we call get_full_name() function.
+
+
+
+We generated a table with information about the users, I wrote a function containing all desirable parameters. For example, name, gender, city, etc. The parameters will depend on the requirements of the test to be performed. We call the Get Methods, listed at the beginning of this notebook. Then, we return pandas dataframe with the users.
+
+
+
+get_users()
+
+
+
+[ ]:
+
+
+
+df1 = pd.DataFrame(get_users())  
+
+
+
+Now we have a pandas dataframe that can be used for any testing purposes that the tester might have.
+
+
+
+
+
+Fruitvice API
+
+Another, more common way to use APIs, is through requests library. The next lab, Requests and HTTP, will contain more information about requests.
+
+
+
+Begin by importing all necessary libraries.
+
+
+
+We will obtain the fruitvice API data using requests.get("url") function. The data is in a json format.
+
+
+
+We will retrieve results using json.loads() function.
+
+
+
+The result is in a nested json format. The 'nutrition' column contains multiple subcolumns, so the data needs to be 'flattened' or normalized.
+
+
+
+The result is in a nested json format. The 'nutrition' column contains multiple subcolumns, so the data needs to be 'flattened' or normalized.
+
+
+
+we can extract some information from this dataframe. Perhaps, we need to know the family and genus of a cherry.
+
+
+
+
+
+cherry = df2.loc[df2["name"] == 'Cherry']
+
+(cherry.iloc[0]['family']) , (cherry.iloc[0]['genus'])
+
+
+
+
+
+
+
